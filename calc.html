@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calc.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="preconnect" href = "calcTable.html">
+</head>
+<body>
+    <form name = "input" onsubmit="event.preventDefault(); return calculate()">
+
+        <label for="neutron" class = "neutrons"><h1>Amount of Neutrons:</h1></label>
+
+        <label for="proton" class = "protons"><h1>Amount of Protons:</h1></label>
+
+        <label for="electron" class = "electrons"><h1>Amount of Electrons:</h1></label>
+        
+        <br/>
+        <br/>
+        <br/>
+        <div class="neutrons"><input type="number" id="neutron" class = "neutrons"name="neutron" value = 0> </div>
+
+        <input type="number" id="proton" name="proton" class = "protons" value = 0>
+
+        <input type="number" id="electron" class = "electrons" name="electron" value = 0> 
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <input type="submit" value="Calculate" id = "submit">
+      </form>
+    <br>
+    <br>
+    <br/>
+    <h1 id="massNumber"></h1>
+    <br>
+    <br>
+    <br/>
+    <h1 id="charge"></h1>
+    <br/>
+    <br/>
+    <br/>
+    <h1 id = "atomNumber"></h1>
+    <br/>
+    <br/>
+    <br/>
+    <h1 id = "atomName"></h1>
+</body>
+<script>
+    var tableHTML = window.localStorage["sharedTable"];
+    var elTable = document.createElement('table');
+    elTable.innerHTML = tableHTML;
+    var elem = elTable
+    var proton
+    var neutron //Math.floor(20 * Math.random())
+    var electron //= Math.floor(20 * Math.random())
+    var massNumber// = (proton + neutron);
+    var charge// = (proton-electron)
+    function calculate() {
+        proton = parseInt(document.forms["input"]["proton"].value);
+        neutron = parseInt(document.forms["input"]["neutron"].value);
+        electron = parseInt(document.forms["input"]["electron"].value);
+        massNumber = (proton + neutron);
+        charge = (proton-electron);
+        document.getElementById('massNumber').innerHTML = " Mass Number: "+massNumber;
+        document.getElementById('charge').innerHTML = " Charge: "+charge;
+        document.getElementById('atomNumber').innerHTML = " Atomic Number: "+proton;
+        //alert(elem.rows[1].cells[4].innerHTML)
+        //var objCells = elem.rows[proton].cells.innerHTML;
+        if (neutron == elem.rows[proton].cells[4].innerHTML && electron == elem.rows[proton].cells[6].innerHTML){
+            document.getElementById('atomName').innerHTML = "You made a stable <str>" + elem.rows[proton].cells[1].innerHTML + "</str> atom"
+        }
+        else {document.getElementById("atomName").innerHTML = ""}
+}
+</script>
+</html>
