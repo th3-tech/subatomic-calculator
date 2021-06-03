@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Subatomic Calculator</title>
     <link rel="stylesheet" href="calc.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="preconnect" href = "calcTable.html">
-    <link rel="icon" type = "image/png" href = "favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+
 </head>
 <body>
     <form name = "input" onsubmit="event.preventDefault(); return calculate()">
@@ -25,7 +26,7 @@
         <br/>
         <div class="neutrons"><input type="number" id="neutron" class = "neutrons"name="neutron" value = 0> </div>
 
-        <input type="number" id="proton" name="proton" class = "protons" value = 0>
+        <input type="number" id="proton" name="proton" class = "protons" value = 1 min = 1 max = 119>
 
         <input type="number" id="electron" class = "electrons" name="electron" value = 0> 
 
@@ -36,6 +37,7 @@
         <br/>
         <input type="submit" value="Calculate" id = "submit">
       </form>
+<div id = "info">
     <br>
     <br>
     <br/>
@@ -51,7 +53,19 @@
     <br/>
     <br/>
     <br/>
+    <h1 id = "group"></h1>
+    <br/>
+    <br/>
+    <br/>
     <h1 id = "atomName"></h1>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <a href = "https://gist.github.com/GoodmanSciences/c2dd862cd38f21b0ad36b8f96b4bf1ee" target = "_blank">Info from GoodmanSciences</a>
+</div>
     <div id = "list" style = "display: none;"> 
         <table id = elementList>
             <tr>
@@ -3624,6 +3638,36 @@
                 <td>7</td>
                 <td>8</td>
             </tr>
+	    <tr>
+                <td>119</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+                <td>Unidentified</td>
+	     </tr>
         </table>
     </div>
 </body>
@@ -3644,11 +3688,12 @@
         document.getElementById('massNumber').innerHTML = " Mass Number: "+massNumber;
         document.getElementById('charge').innerHTML = " Charge: "+charge;
         document.getElementById('atomNumber').innerHTML = " Atomic Number: "+proton;
+	document.getElementById('group').innerHTML = " Group: "+ elTable.rows[proton].cells[15].innerHTML
         //var objCells = elem.rows[proton].cells.innerHTML;
         if (neutron == elTable.rows[proton].cells[4].innerHTML && electron == elTable.rows[proton].cells[6].innerHTML){
             document.getElementById('atomName').innerHTML = " You made a stable <str>" + elTable.rows[proton].cells[1].innerHTML + "</str> atom"
         }
-        else {document.getElementById("atomName").innerHTML = "You made a " + elTable.rows[proton].cells[1].innerHTML + " isotope"}
-
+        else {document.getElementById("atomName").innerHTML = " You made a " + elTable.rows[proton].cells[1].innerHTML + " isotope"}
+}
 </script>
 </html>
