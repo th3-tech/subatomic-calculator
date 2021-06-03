@@ -58,7 +58,10 @@
     <br/>
     <br/>
     <h1 id = "atomName"></h1>
-
+    <br/>
+    <br/>
+    <br/>
+    <h1 id = "valence"></h1>
 
     <br/>
     <br/>
@@ -3675,6 +3678,7 @@
     var elTable = document.createElement("table")
     elTable.innerHTML = document.getElementById("elementList").innerHTML;
     var proton
+    var valence
     var neutron //Math.floor(20 * Math.random())
     var electron //= Math.floor(20 * Math.random())
     var massNumber// = (proton + neutron);
@@ -3683,12 +3687,18 @@
         proton = parseInt(document.forms["input"]["proton"].value);
         neutron = parseInt(document.forms["input"]["neutron"].value);
         electron = parseInt(document.forms["input"]["electron"].value);
+        valence = electron
+        if (valence > 2) {
+            valence -= 2
+            valence = valence % 8
+        }
         massNumber = (proton + neutron);
         charge = (proton-electron);
         document.getElementById('massNumber').innerHTML = " Mass Number: "+massNumber;
         document.getElementById('charge').innerHTML = " Charge: "+charge;
         document.getElementById('atomNumber').innerHTML = " Atomic Number: "+proton;
-	document.getElementById('group').innerHTML = " Group: "+ elTable.rows[proton].cells[15].innerHTML
+	    document.getElementById('group').innerHTML = " Group: "+ elTable.rows[proton].cells[15].innerHTML
+        document.getElementById('valence').innerHTML = " Electrons in valence (outer) shell: "+valence;
         //var objCells = elem.rows[proton].cells.innerHTML;
         if (neutron == elTable.rows[proton].cells[4].innerHTML && electron == elTable.rows[proton].cells[6].innerHTML){
             document.getElementById('atomName').innerHTML = " You made a stable <str>" + elTable.rows[proton].cells[1].innerHTML + "</str> atom"
